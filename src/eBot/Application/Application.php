@@ -303,6 +303,11 @@ class Application extends AbstractApplication {
             Logger::error("Can't select database " . Config::getInstance()->getMysql_base());
             die(1);
         }
+        
+        if (!\mysql_set_charset("utf8", $conn)) {
+            Logger::error("Can't set charset");
+            die(1);
+        }
     }
 
     public function getName() {
